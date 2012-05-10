@@ -69,9 +69,9 @@ if __name__ == '__main__':
     if options.js_files:
         for file in options.js_files:
             if options.js_parseonly:
-                cmd += 'print(Narcissus.decompiler.pp(Narcissus.parser.parse(snarf("%(file)s"), "%(file)s", 1))); ' % { 'file':file }
+                cmd += 'print(Narcissus.decompiler.pp(Narcissus.parser.parse(read("%(file)s"), "%(file)s", 1))); ' % { 'file':file }
             else:
-                cmd += 'Narcissus.interpreter.test(function(){Narcissus.interpreter.evaluate(snarf("%(file)s"), "%(file)s", 1);}) || quit(1);' % { 'file':file }
+                cmd += 'Narcissus.interpreter.test(function(){Narcissus.interpreter.evaluate(read("%(file)s"), "%(file)s", 1);}) || quit(1);' % { 'file':file }
 
     if (not options.js_exps) and (not options.js_files):
         options.js_interactive = True

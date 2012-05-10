@@ -35,7 +35,7 @@ FAIL_RESOLVE_PASS=0
 FAIL_RESOLVE_FAIL=0
 
 for f in harmony-tests/fail-resolve/*.js ; do
-    ./njs -E "Narcissus.resolver.resolve(Narcissus.parser.parse(snarf('$f')),Narcissus.interpreter.globalStaticEnv)" >/dev/null 2>&1
+    ./njs -E "Narcissus.resolver.resolve(Narcissus.parser.parse(read('$f')),Narcissus.interpreter.globalStaticEnv)" >/dev/null 2>&1
     if [ $? -eq 0 ]; then
         FAIL_RESOLVE_FAIL=$((FAIL_RESOLVE_FAIL + 1))
         FAILURES="$FAILURES $f"
